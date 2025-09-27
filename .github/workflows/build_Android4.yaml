@@ -18,6 +18,12 @@ jobs:
         run: echo "PROJECT=$(cat project-to-build)" >> "$GITHUB_OUTPUT"
       - name: Clone project
         run: git clone --depth=1 "${{ steps.get-project.outputs.PROJECT }}" project
+      - name: Checkout Media 1.2.0
+        uses: actions/checkout@v4
+        with:
+          repository: androidx/media
+          ref:        1.2.0
+          path:       media 
       - name: Build the app
         working-directory: ./project
         run: |
