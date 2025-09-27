@@ -44,7 +44,8 @@ jobs:
         run: |
           if [ ! -f "gradlew" ]; then gradle wrapper; fi
           chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
+          #./gradlew assembleDebug --stacktrace
+          ./gradlew assembleRelease --stacktrace
 
       - name: 找出 apk 路径（调试用，可删）
         working-directory: ./project
@@ -52,7 +53,7 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: my-build-apk
+          name: BuildRelease-apk-${{ github.run_number }}
           path: ./**/*.apk
           retention-days: 7
 
