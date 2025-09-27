@@ -33,6 +33,8 @@ jobs:
         run: |
           sed -i 's/minSdkVersion[[:space:]]*21/minSdkVersion 16/g' \
             media/libraries/datasource_okhttp/build.gradle
+          echo "===== 修改后 build.gradle ====="
+          cat media/libraries/datasource_okhttp/build.gradle
       - name: Create local.properties
         working-directory: ./project
         run: touch local.properties
